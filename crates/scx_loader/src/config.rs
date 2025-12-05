@@ -108,6 +108,7 @@ pub fn get_default_config() -> Config {
         SupportedSched::Beerland,
         SupportedSched::Chaos,
         SupportedSched::Mitosis,
+        SupportedSched::WD40,
     ];
     let scheds_map = HashMap::from(supported_scheds.map(init_default_config_entry));
     Config {
@@ -259,7 +260,8 @@ fn get_default_scx_flags_for_mode(
         SupportedSched::Rusty
         | SupportedSched::Rustland
         | SupportedSched::Beerland
-        | SupportedSched::Mitosis => vec![],
+        | SupportedSched::Mitosis
+        | SupportedSched::WD40 => vec![],
     }
 }
 
@@ -352,6 +354,13 @@ powersave_mode = ["--sched-mode", "efficiency"]
 server_mode = ["--keep-running"]
 
 [scheds.scx_mitosis]
+auto_mode = []
+gaming_mode = []
+lowlatency_mode = []
+powersave_mode = []
+server_mode = []
+
+[scheds.scx_wd40]
 auto_mode = []
 gaming_mode = []
 lowlatency_mode = []
