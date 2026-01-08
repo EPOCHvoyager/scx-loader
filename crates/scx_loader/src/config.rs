@@ -108,6 +108,7 @@ pub fn get_default_config() -> Config {
         SupportedSched::Beerland,
         SupportedSched::Cake,
         SupportedSched::Chaos,
+        SupportedSched::Mitosis,
     ];
     let scheds_map = HashMap::from(supported_scheds.map(init_default_config_entry));
     Config {
@@ -259,7 +260,8 @@ fn get_default_scx_flags_for_mode(
         SupportedSched::Rusty
         | SupportedSched::Rustland
         | SupportedSched::Beerland
-        | SupportedSched::Cake => vec![],
+        | SupportedSched::Cake
+        | SupportedSched::Mitosis => vec![],
     }
 }
 
@@ -357,6 +359,13 @@ gaming_mode = ["--task-slice", "true", "-f", "--sched-mode", "performance"]
 lowlatency_mode = ["-y", "-f", "--task-slice", "true"]
 powersave_mode = ["--sched-mode", "efficiency"]
 server_mode = ["--keep-running"]
+
+[scheds.scx_mitosis]
+auto_mode = []
+gaming_mode = []
+lowlatency_mode = []
+powersave_mode = []
+server_mode = []
 "#;
 
         let parsed_config = parse_config_content(config_str).expect("Failed to parse config");
